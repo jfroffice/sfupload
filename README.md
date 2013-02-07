@@ -1,4 +1,5 @@
 sfupload
 ========
 
-simple file upload api
+simple file upload javascript api
+
