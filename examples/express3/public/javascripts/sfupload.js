@@ -154,72 +154,68 @@
         ajaxDL(root, files, 0);
     }
 
+    $.fn.sfupload = function(options) {
 
+        var self = this;
 
-  // Collection method.
-  $.fn.sfupload = function(options) {
+        if (global.File && global.FileReader && global.FileList && global.Blob) {
 
-      var self = this;
+            self.options = {
+                progress: '#status',
+                url: 'upload',
+                onstart: null,
+                onfinish: null,
+                onprogress: function() {
+                    throw new Error("You should defined onprogress: function(data) { file, meanSpeed, progress, size, timeRest }");
+                },
+                onsuccess: function () {
+                    throw new Error("You should defined onsuccess: function(file) { name, type, size, data }");
+                },
+                allowdrop: false
+            };
 
-      if (global.File && global.FileReader && global.FileList && global.Blob) {
-
-          self.options = {
-              input: '#files',
-              progress: '#status',
-              url: 'upload',
-              onstart: null,
-              onfinish: null,
-              onprogress: function() {
-                  throw new Error("You should defined onprogress: function(data) { file, meanSpeed, progress, size, timeRest }");
-              },
-              onsuccess: function () {
-                  throw new Error("You should defined onsuccess: function(file) { name, type, size, data }");
-              },
-              allowdrop: false
-          };
-
-          for (var key in options) {
-              self.options[key] = options[key];
-          }
-
-          // Starting the job
-          $(self.options.input).on("change", function(e) {
-              uploadFiles(self.options.url, e.target.files);
-          });
-
-          // Bind for the drag & drop stuff !
-          if (self.options.allowdrop) {
-
-              var nopEvent = function(e) {
-                  e.stopPropagation();
-                  e.preventDefault();
-              };
-
-              var dropEvent = function(e) {
-                  nopEvent(e);
-                  uploadFiles(getUri(e) + self.options.url, e.dataTransfer.files);
-              };
-
-              global.document.addEventListener("dragenter", nopEvent, false);
-              global.document.addEventListener("dragover", nopEvent, false);
-              global.document.addEventListener("drop", dropEvent, false);
-          }
-
-          _onstart = self.options.onstart;
-          _onfinish = self.options.onfinish;
-          _onprogress = self.options.onprogress;
-          _onsuccess = self.options.onsuccess;
-      }
-
-/*        cancel: function() {
-            if (_xhr && _xhr.readyState !== 4) {
-                _xhr.abort();
+            for (var key in options) {
+                self.options[key] = options[key];
             }
-        },
-        reset: function() {
-            var self = this;
-            $(self.options.input).val('');
-        }*/
+
+            // Starting the job
+            $(this).on("change", function(e) {
+                uploadFiles(self.options.url, e.target.files);
+            });
+
+            // Bind for the drag & drop stuff !
+            if (self.options.allowdrop) {
+
+                var nopEvent = function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                };
+
+                var dropEvent = function(e) {
+                    nopEvent(e);
+                    uploadFiles(getUri(e) + self.options.url, e.dataTransfer.files);
+                };
+
+                global.document.addEventListener("dragenter", nopEvent, false);
+                global.document.addEventListener("dragover", nopEvent, false);
+                global.document.addEventListener("drop", dropEvent, false);
+            }
+
+            _onstart = self.options.onstart;
+            _onfinish = self.options.onfinish;
+            _onprogress = self.options.onprogress;
+            _onsuccess = self.options.onsuccess;
+        }
+
+        /*        cancel: function() {
+         if (_xhr && _xhr.readyState !== 4) {
+         _xhr.abort();
+         }
+         },
+         reset: function() {
+         var self = this;
+         $(self.options.input).val('');
+         }*/
     };
 
 }(this, jQuery));
