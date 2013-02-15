@@ -161,7 +161,6 @@
         if (global.File && global.FileReader && global.FileList && global.Blob) {
 
             self.options = {
-                progress: '#status',
                 url: 'upload',
                 onstart: null,
                 onfinish: null,
