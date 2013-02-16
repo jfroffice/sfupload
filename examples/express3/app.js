@@ -28,7 +28,11 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
+
+app.post('/upload', function(req, res) {
+/*    console.log(req.files);*/
+    res.send(req.files);
+});
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
