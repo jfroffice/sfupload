@@ -1,4 +1,4 @@
-/*! Simple File Upload JS API - v0.1.0 - 2013-02-15
+/*! Simple File Upload JS API - v0.1.0 - 2013-02-16
 * https://github.com/jfroffice/sfupload
 * Copyright (c) 2013 John Fischer; Licensed MIT */
 

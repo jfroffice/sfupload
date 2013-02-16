@@ -38,8 +38,9 @@ $(function() {
 ## Documentation
 _(Coming soon)_
 
-## Examples
-_(Coming soon)_
+## Demo
+[sfupload](http://sfupload.jfroffice.me)
 
 ## Release History
-_(Nothing yet)_
+v0.1.0 : initial revision
+
