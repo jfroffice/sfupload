@@ -82,7 +82,7 @@
 
             _onprogress({
                 file: file,
-                meanSpeed: meanSpeed,
+                speed: meanSpeed,
                 progress: Math.floor((e.loaded / e.total) * 1000) / 10,
                 timeRest: timeRestDisplay,
                 size: getHumanSize(file.size),
@@ -162,6 +162,7 @@
 
             self.options = {
                 url: 'upload',
+                allowdrop: true,
                 onstart: null,
                 onfinish: null,
                 onprogress: function() {
@@ -169,8 +170,7 @@
                 },
                 onsuccess: function () {
                     throw new Error("You should defined onsuccess: function(file) { name, type, size, data }");
-                },
-                allowdrop: false
+                }
             };
 
             for (var key in options) {

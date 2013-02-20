@@ -18,12 +18,12 @@ $(function() {
 
     $('#files').sfupload({
         url: 'upload',
-        allowdrop: true,
+        dragndrop: true,
         onstart: function() {
             console.log('onstart');
         },
         onsuccess: function() {
-            console.log('onsucess');
+            console.log('onsuccess');
         },
         onprogress: function(data) {
             console.log('onprogress');
@@ -38,9 +38,8 @@ $(function() {
 ## Documentation
 _(Coming soon)_
 
-## Demo
-[sfupload](http://sfupload.jfroffice.me)
+[Demo](http://sfupload.jfroffice.me)
 
 ## Release History
-v0.1.0 : initial revision
+0.1.0 : initial revision
 
