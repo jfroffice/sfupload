@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/css/style.css' />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src='js/sfupload.js'></script>
     <script src='js/go.js'></script>
@@ -14,11 +14,15 @@
     </div>
     <div class='btn'>Select File</div>
     <input type="file" id="files" name="files[]" multiple="">
-    <div id="progress">
-      <div class="bar"><span></span></div>
+    <div id="container">
+      <div id="fileinfo"></div>
+      <div id="filesize"></div>
+      <div id="progress">
+        <div class="bar"></div>
+      </div>
+      <div id="speed"></div>
+      <div id="timeRest"></div>
+      <div id="file"></div>
     </div>
-    <div id="file"></div>
-    <div id="speed"></div>
-    <div id="timeRest"></div>
   </body>
 </html>

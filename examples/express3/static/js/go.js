@@ -1,7 +1,10 @@
 $(function() {
-    var $progress = $('#progress'),
+    var $container = $('#container'),
         $speed = $('#speed'),
         $timeRest = $('#timeRest'),
+        $fileinfo = $('#fileinfo'),
+        $filesize = $('#filesize'),
+        $progress = $('#progress'),
         $bar = $progress.find('.bar'),
         factor = ($progress.width() - 4) / 100;
 
@@ -14,15 +17,19 @@ $(function() {
         allowdrop: true,
         onstart: function() {
             $bar.css('width', '0');
-            $progress.fadeIn();
+            $container.fadeIn();
         },
         onsuccess: function() {
-            console.log('onsuccess');
-            $progress.fadeOut();
+
+            $bar.css('width', $progress.width() - 4)
+            $container.fadeOut();
             $speed.html('');
             $timeRest.html('');
         },
         onprogress: function(data) {
+
+            $fileinfo.html(data.file.name);
+            $filesize.html(Math.round(data.file.size / 1024) + ' KB');
 
             $speed.html(data.speed);
             $timeRest.html(data.timeRest);
