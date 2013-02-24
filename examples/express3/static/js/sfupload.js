@@ -15,16 +15,16 @@
         _xhr;
 
     function getHumanSize(size) {
-        var type = "o";
+        var type = "B";
 
         if (size > 1024) {
             size = size >> 10;
-            type = "Ko";
+            type = "KB";
         }
 
         if (size > 1024) {
             size = size >> 10;
-            type = "Mo";
+            type = "MB";
         }
 
         return size.toFixed(1).toString().replace('.0', '') + " " + type;
@@ -68,9 +68,9 @@
             }
 
             if (meanSpeed < 1024) {
-                meanSpeed += ' Ko/s';
+                meanSpeed += ' KB/s';
             } else {
-                meanSpeed = (meanSpeed / 1024).toFixed(1).toString().replace('.0', '') + ' Mo/s';
+                meanSpeed = (meanSpeed / 1024).toFixed(1).toString().replace('.0', '') + ' MB/s';
             }
 
             e.target.timeRest = timeRest;
@@ -162,9 +162,7 @@
 
             self.options = {
                 url: 'upload',
-                allowdrop: true,
-                onstart: null,
-                onfinish: null,
+                dragndrop: true,
                 onprogress: function() {
                     throw new Error("You should defined onprogress: function(data) { file, meanSpeed, progress, size, timeRest }");
                 },
@@ -183,7 +181,7 @@
             });
 
             // Bind for the drag & drop stuff !
-            if (self.options.allowdrop) {
+            if (self.options.dragndrop) {
 
                 var nopEvent = function(e) {
                     e.stopPropagation();

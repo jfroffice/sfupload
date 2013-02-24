@@ -26,7 +26,7 @@ cursor: pointer;
 #progress {
     position:relative;
     display:block;
-    width:560px;
+    width:500px;
     height:20px;
     margin-top: 20px;
 }
@@ -35,7 +35,7 @@ cursor: pointer;
     position:absolute;
     display:block;
     content:"";
-    width:558px;
+    width:502px;
     height:18px;
     top:10px;
     border-radius:20px;
@@ -55,10 +55,21 @@ cursor: pointer;
     overflow:hidden;
 }
 
-#info {
-    margin-top: 20px;
-    margin-bottom: 30px;
-    color: #555;
+.info {
+margin-top: 20px;
+margin-bottom: 30px;
+color: #555;
+}
+
+.warning {
+position: absolute;
+right: 10px;
+bottom: 10px;
+text-align: right;
+margin-top: 20px;
+color: #FC4759;
+font-size: 14px;
+font-weight: bold;
 }
 
 #container {
@@ -66,8 +77,8 @@ position: absolute;
 margin-top: 150px;
 top: 50%;
 left: 50%;
-margin-left: -230px;
-width: 560px;
+margin-left: -250px;
+width: 500px;
 margin-top: -37px;
 height: 78px;
 background-color: #DDD;

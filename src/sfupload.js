@@ -15,16 +15,16 @@
         _xhr;
 
     function getHumanSize(size) {
-        var type = "o";
+        var type = "B";
 
         if (size > 1024) {
             size = size >> 10;
-            type = "Ko";
+            type = "KB";
         }
 
         if (size > 1024) {
             size = size >> 10;
-            type = "Mo";
+            type = "MB";
         }
 
         return size.toFixed(1).toString().replace('.0', '') + " " + type;
@@ -68,9 +68,9 @@
             }
 
             if (meanSpeed < 1024) {
-                meanSpeed += ' Ko/s';
+                meanSpeed += ' KB/s';
             } else {
-                meanSpeed = (meanSpeed / 1024).toFixed(1).toString().replace('.0', '') + ' Mo/s';
+                meanSpeed = (meanSpeed / 1024).toFixed(1).toString().replace('.0', '') + ' MB/s';
             }
 
             e.target.timeRest = timeRest;
@@ -82,7 +82,7 @@
 
             _onprogress({
                 file: file,
-                meanSpeed: meanSpeed,
+                speed: meanSpeed,
                 progress: Math.floor((e.loaded / e.total) * 1000) / 10,
                 timeRest: timeRestDisplay,
                 size: getHumanSize(file.size),
@@ -161,8 +161,8 @@
         if (global.File && global.FileReader && global.FileList && global.Blob) {
 
             self.options = {
-                progress: '#status',
                 url: 'upload',
+                dragndrop: true,
                 onstart: null,
                 onfinish: null,
                 onprogress: function() {
@@ -170,8 +170,7 @@
                 },
                 onsuccess: function () {
                     throw new Error("You should defined onsuccess: function(file) { name, type, size, data }");
-                },
-                allowdrop: false
+                }
             };
 
             for (var key in options) {
@@ -184,7 +183,7 @@
             });
 
             // Bind for the drag & drop stuff !
-            if (self.options.allowdrop) {
+            if (self.options.dragndrop) {
 
                 var nopEvent = function(e) {
                     e.stopPropagation();

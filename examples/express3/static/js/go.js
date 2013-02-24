@@ -20,9 +20,8 @@ $(function() {
             $container.fadeIn();
         },
         onsuccess: function() {
-
-            $bar.css('width', $progress.width() - 4)
             $container.fadeOut();
+            $bar.css('width', $progress.width() - 4)
             $speed.html('');
             $timeRest.html('');
         },
