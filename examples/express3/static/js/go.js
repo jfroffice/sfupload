@@ -6,7 +6,8 @@ $(function() {
         $filesize = $('#filesize'),
         $progress = $('#progress'),
         $bar = $progress.find('.bar'),
-        factor = ($progress.width() - 4) / 100;
+        OFFSET = 4,
+        factor = ($progress.width() - OFFSET) / 100;
 
     $('.btn').click(function() {
          $('#files').click();
@@ -14,14 +15,13 @@ $(function() {
 
     $('#files').sfupload({
         url: 'upload',
-        allowdrop: true,
         onstart: function() {
             $bar.css('width', '0');
             $container.fadeIn();
         },
-        onsuccess: function() {
+        onsuccess: function(file) {
             $container.fadeOut();
-            $bar.css('width', $progress.width() - 4)
+            $bar.css('width', $progress.width() - OFFSET)
             $speed.html('');
             $timeRest.html('');
         },
@@ -32,7 +32,6 @@ $(function() {
 
             $speed.html(data.speed);
             $timeRest.html(data.timeRest);
-            console.log(data);
 
             $bar.animate({ width:  data.progress * factor }, 200);
         }

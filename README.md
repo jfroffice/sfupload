@@ -22,7 +22,7 @@ $(function() {
         onstart: function() {
             console.log('onstart');
         },
-        onsuccess: function() {
+        onsuccess: function(file) {
             console.log('onsuccess');
         },
         onprogress: function(data) {
