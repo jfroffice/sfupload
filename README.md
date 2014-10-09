@@ -3,8 +3,6 @@
 Simple File Upload jQuery Plugin
 
 ## Getting Started
-Download the [production version][min] or the [development version][max].
-
 [min]: https://raw.github.com/jfroffice/sfupload/master/dist/sfupload.min.js
 [max]: https://raw.github.com/jfroffice/sfupload/master/dist/sfupload.js
 
@@ -36,8 +34,6 @@ $(function() {
 ```
 
 ## Documentation
-_(Coming soon)_
-
 [Demo](http://sfupload.jfroffice.me)
 
 ## Release History
